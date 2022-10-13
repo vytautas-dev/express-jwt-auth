@@ -9,7 +9,9 @@ const jwtOpts: StrategyOptions = {
   secretOrKey: jwtSecret,
 };
 
+// create authentication strategy
 export default new Strategy(jwtOpts, async (payload, done) => {
+  console.log(done);
   try {
     const user = await User.findById(payload.id);
     if (user) {
